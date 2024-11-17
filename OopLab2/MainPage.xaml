@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="OopLab2.MainPage"
+             Title="XML Viewer">
+    <ContentPage.Content>
+        <Grid Padding="10">
+            <!-- Main layout grid with columns -->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Top Menu Bar -->
+            <Grid Grid.Column="0" Grid.ColumnSpan="2">
+                <HorizontalStackLayout>
+                    <Button Text="File" Clicked="OnFileButtonClicked"/>
+                    <Button Text="Exit" HorizontalOptions="EndAndExpand" Clicked="OnExitButtonClicked"/>
+                </HorizontalStackLayout>
+            </Grid>
+
+            <!-- Popup Menu for File Options -->
+            <StackLayout x:Name="FileMenu" IsVisible="False" Orientation="Vertical" Margin="0,30,0,0">
+                <Button Text="Open" Clicked="OnOpenFileClicked"/>
+                <Button Text="Save" Clicked="OnSaveFileClicked"/>
+            </StackLayout>
+
+            <!-- XML Text Display -->
+            <Editor x:Name="XmlTextBox" 
+                    Grid.Column="0" 
+                    Margin="5,50,5,5" 
+                    AutoSize="TextChanges"
+                    FontFamily="Courier New" 
+                    FontSize="14"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand"
+                    Placeholder="XML content will be displayed here" />
+
+            <!-- Right Panel -->
+            <VerticalStackLayout Grid.Column="1" Margin="10,50,0,0" HorizontalOptions="Center" Spacing="10">
+                <!-- Search Query TextBox -->
+                <Entry x:Name="SearchQueryTextBox" WidthRequest="150" 
+                       Placeholder="Type search query..." />
+
+                <!-- Algorithm Selection -->
+                <Label Text="Algorithm" FontAttributes="Bold"/>
+                <RadioButton x:Name="SAXRadioButton" Content="SAX" GroupName="AlgorithmGroup"/>
+                <RadioButton x:Name="DOMRadioButton" Content="DOM" GroupName="AlgorithmGroup"/>
+                <RadioButton x:Name="LINQRadioButton" Content="LINQ" GroupName="AlgorithmGroup"/>
+
+                <!-- Buttons -->
+                <Button x:Name="ShowHtmlButton" Text="Show HTML" WidthRequest="150" Clicked="OnShowHtmlButtonClicked"/>
+                <Button x:Name="ClearAllButton" Text="Clear all" WidthRequest="150" Clicked="OnClearAllButtonClicked"/>
+            </VerticalStackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
